@@ -1,10 +1,12 @@
-# Data (generated)
+# Data (generated, except sample files)
 data/
+!data/*.json
 tailored-resumes/
 logs/
 
 # Config (contains personal info)
 config.json
+.env
 
 # LaTeX aux files
 *.aux

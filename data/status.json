@@ -1,0 +1,34 @@
+{
+  "jobs": {
+    "apple-swe-001": {
+      "status": "resume_ready",
+      "resume": "tailored-resumes/2026-03-25/Resume_Apple.pdf"
+    },
+    "google-swe-002": {
+      "status": "applied",
+      "resume": "tailored-resumes/2026-03-25/Resume_Google.pdf"
+    },
+    "stripe-swe-003": {
+      "status": "new"
+    },
+    "anthropic-swe-004": {
+      "status": "interviewing",
+      "resume": "tailored-resumes/2026-03-25/Resume_Anthropic.pdf"
+    },
+    "meta-swe-005": {
+      "status": "new"
+    },
+    "netflix-swe-006": {
+      "status": "resume_ready",
+      "resume": "tailored-resumes/2026-03-23/Resume_Netflix.pdf"
+    },
+    "openai-swe-007": {
+      "status": "offer",
+      "resume": "tailored-resumes/2026-03-25/Resume_OpenAI.pdf"
+    },
+    "tesla-swe-008": {
+      "status": "rejected",
+      "resume": "tailored-resumes/2026-03-22/Resume_Tesla.pdf"
+    }
+  }
+}
