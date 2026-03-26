@@ -244,10 +244,13 @@ def generate_tailored_resume(job: dict, master_tex: str, config: dict) -> Option
     date_dir = TAILORED_DIR / today
     date_dir.mkdir(parents=True, exist_ok=True)
     
-    # Filename: Name_Company.tex
+    # Filename: Name_Company_ShortRole.tex
     name_clean = sanitize_name(config.get("name", "Resume"))
     company_clean = sanitize_name(company)
-    base_filename = f"{name_clean}_{company_clean}"
+    # Extract a short role tag (first 2 meaningful words)
+    role_words = [w for w in sanitize_name(role).split('_') if w.lower() not in ('software', 'engineer', 'senior', 'staff', 'principal')]
+    role_tag = '_'.join(role_words[:2]) if role_words else 'SWE'
+    base_filename = f"{name_clean}_{company_clean}_{role_tag}"
     tex_path = date_dir / f"{base_filename}.tex"
     
     # Add tailoring comment
@@ -288,13 +291,16 @@ def compile_latex_to_pdf(tex_path: Path, output_dir: Path) -> bool:
 def generate_tailored_resume_pdf(job: dict, master_pdf: Path, config: dict) -> Optional[Path]:
     """Copy PDF resume with a tailored filename for each job."""
     company = job.get("company", "Company")
+    role = job.get("role", "Software Engineer")
     today = datetime.now().strftime("%Y-%m-%d")
     date_dir = TAILORED_DIR / today
     date_dir.mkdir(parents=True, exist_ok=True)
     
     name_clean = sanitize_name(config.get("name", "Resume"))
     company_clean = sanitize_name(company)
-    pdf_path = date_dir / f"{name_clean}_{company_clean}.pdf"
+    role_words = [w for w in sanitize_name(role).split('_') if w.lower() not in ('software', 'engineer', 'senior', 'staff', 'principal')]
+    role_tag = '_'.join(role_words[:2]) if role_words else 'SWE'
+    pdf_path = date_dir / f"{name_clean}_{company_clean}_{role_tag}.pdf"
     
     shutil.copy2(master_pdf, pdf_path)
     return pdf_path

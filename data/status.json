@@ -2,153 +2,273 @@
   "jobs": {
     "apple-swe-001": {
       "status": "resume_ready",
-      "resume": "tailored-resumes/2026-03-25/Resume_Apple.pdf"
+      "resume": "Sneha_Resume.pdf"
     },
     "google-swe-002": {
       "status": "applied",
-      "resume": "tailored-resumes/2026-03-25/Resume_Google.pdf"
+      "resume": "Sneha_Resume.pdf"
     },
     "stripe-swe-003": {
       "status": "new"
     },
     "anthropic-swe-004": {
       "status": "interviewing",
-      "resume": "tailored-resumes/2026-03-25/Resume_Anthropic.pdf"
+      "resume": "Sneha_Resume.pdf"
     },
     "meta-swe-005": {
       "status": "new"
     },
     "netflix-swe-006": {
       "status": "resume_ready",
-      "resume": "tailored-resumes/2026-03-23/Resume_Netflix.pdf"
+      "resume": "Sneha_Resume.pdf"
     },
     "openai-swe-007": {
       "status": "offer",
-      "resume": "tailored-resumes/2026-03-25/Resume_OpenAI.pdf"
+      "resume": "Sneha_Resume.pdf"
     },
     "tesla-swe-008": {
       "status": "rejected",
-      "resume": "tailored-resumes/2026-03-22/Resume_Tesla.pdf"
+      "resume": "Sneha_Resume.pdf"
     },
     "anthropic-gh-5134895008": {
       "created": "2026-03-26T17:09:27.845114",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.845127",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.927790",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__API.pdf"
     },
     "anthropic-gh-5120512008": {
       "created": "2026-03-26T17:09:27.845599",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.845602",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.929082",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Security.pdf"
     },
     "anthropic-gh-5110511008": {
       "created": "2026-03-26T17:09:27.846188",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.846191",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.930084",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__.pdf"
     },
     "anthropic-gh-5139910008": {
       "created": "2026-03-26T17:09:27.846553",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.846555",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.930947",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__.pdf"
     },
     "anthropic-gh-5114768008": {
       "created": "2026-03-26T17:09:27.846867",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.846868",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.932224",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__.pdf"
     },
     "anthropic-gh-5159146008": {
       "created": "2026-03-26T17:09:27.847144",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.847145",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.933944",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__.pdf"
     },
     "anthropic-gh-5108817008": {
       "created": "2026-03-26T17:09:27.847528",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.847531",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.934819",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__.pdf"
     },
     "discord-gh-8400845002": {
       "created": "2026-03-26T17:09:27.847957",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.847959",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Discord.pdf"
+      "updated": "2026-03-26T17:16:32.935656",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Discord__.pdf"
     },
     "anthropic-gh-5113224008": {
       "created": "2026-03-26T17:09:27.848329",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.848331",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.936382",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__.pdf"
     },
     "anthropic-gh-5026097008": {
       "created": "2026-03-26T17:09:27.848622",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.848624",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.937104",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic_UI_.pdf"
     },
     "anthropic-gh-4816198008": {
       "created": "2026-03-26T17:09:27.848909",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.848911",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.937780",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Claude.pdf"
     },
     "anthropic-gh-4988878008": {
       "created": "2026-03-26T17:09:27.849221",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.849222",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.938450",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Claude.pdf"
     },
     "anthropic-gh-5098025008": {
       "created": "2026-03-26T17:09:27.849544",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.849545",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.939118",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic_Model_Quality.pdf"
     },
     "anthropic-gh-5123039008": {
       "created": "2026-03-26T17:09:27.850096",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.850097",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.939802",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Account.pdf"
     },
     "anthropic-gh-4951844008": {
       "created": "2026-03-26T17:09:27.850425",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.850426",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.940498",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Safeguards.pdf"
     },
     "anthropic-gh-4673416008": {
       "created": "2026-03-26T17:09:27.850710",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.850712",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.941168",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__UI.pdf"
     },
     "anthropic-gh-5098506008": {
       "created": "2026-03-26T17:09:27.850988",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.850990",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.941862",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Windows.pdf"
     },
     "anthropic-gh-4561282008": {
       "created": "2026-03-26T17:09:27.851329",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.851330",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.942458",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Claude.pdf"
     },
     "anthropic-gh-4887959008": {
       "created": "2026-03-26T17:09:27.851620",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.851621",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.943081",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic_Security.pdf"
     },
     "anthropic-gh-4980420008": {
       "created": "2026-03-26T17:09:27.851916",
       "status": "resume_ready",
-      "updated": "2026-03-26T17:09:27.851917",
-      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic.pdf"
+      "updated": "2026-03-26T17:16:32.943647",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Desktop.pdf"
+    },
+    "anthropic-gh-4941996008": {
+      "created": "2026-03-26T17:15:26.127020",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.127033",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Enterprise.pdf"
+    },
+    "anthropic-gh-5111745008": {
+      "created": "2026-03-26T17:15:26.128447",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.128452",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Inference.pdf"
+    },
+    "anthropic-gh-4955107008": {
+      "created": "2026-03-26T17:15:26.129625",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.129629",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Platform.pdf"
+    },
+    "anthropic-gh-5023089008": {
+      "created": "2026-03-26T17:15:26.130411",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.130414",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Platform.pdf"
+    },
+    "anthropic-gh-5126702008": {
+      "created": "2026-03-26T17:15:26.131190",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.131193",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__.pdf"
+    },
+    "anthropic-gh-4595463008": {
+      "created": "2026-03-26T17:15:26.131977",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.131980",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic_Security_.pdf"
+    },
+    "anthropic-gh-5120144008": {
+      "created": "2026-03-26T17:15:26.132767",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.132770",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Developer.pdf"
+    },
+    "anthropic-gh-5151069008": {
+      "created": "2026-03-26T17:15:26.133703",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.133706",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__.pdf"
+    },
+    "anthropic-gh-5120180008": {
+      "created": "2026-03-26T17:15:26.134503",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.134505",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Data.pdf"
+    },
+    "anthropic-gh-5159152008": {
+      "created": "2026-03-26T17:15:26.135271",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.135273",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Privacy.pdf"
+    },
+    "anthropic-gh-5065894008": {
+      "created": "2026-03-26T17:15:26.136136",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.136139",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__.pdf"
+    },
+    "anthropic-gh-5063007008": {
+      "created": "2026-03-26T17:15:26.136816",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.136818",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Cybersecurity.pdf"
+    },
+    "anthropic-gh-5109273008": {
+      "created": "2026-03-26T17:15:26.138307",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.138313",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Human.pdf"
+    },
+    "anthropic-gh-5108982008": {
+      "created": "2026-03-26T17:15:26.139234",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.139237",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Compute.pdf"
+    },
+    "anthropic-gh-4899511008": {
+      "created": "2026-03-26T17:15:26.139993",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.139997",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Android.pdf"
+    },
+    "anthropic-gh-4942024008": {
+      "created": "2026-03-26T17:15:26.140735",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.140737",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Beneficial.pdf"
+    },
+    "anthropic-gh-4667572008": {
+      "created": "2026-03-26T17:15:26.141358",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.141360",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Enterprise.pdf"
+    },
+    "anthropic-gh-4572744008": {
+      "created": "2026-03-26T17:15:26.142071",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.142074",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__iOS.pdf"
+    },
+    "anthropic-gh-4902636008": {
+      "created": "2026-03-26T17:15:26.142800",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.142802",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Public.pdf"
+    },
+    "anthropic-gh-5146298008": {
+      "created": "2026-03-26T17:15:26.143458",
+      "status": "resume_ready",
+      "updated": "2026-03-26T17:15:26.143460",
+      "resume": "tailored-resumes/2026-03-26/Sneha_Anthropic__Billing.pdf"
     }
   }
 }
