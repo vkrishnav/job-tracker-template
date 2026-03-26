@@ -7,8 +7,15 @@
     "match": 92,
     "location": "Cupertino, CA",
     "url": "https://jobs.apple.com/en-us/details/200554359",
-    "skillsHave": ["Python", "TensorFlow", "Swift", "CoreML"],
-    "skillsMissing": ["Objective-C"],
+    "skillsHave": [
+      "Python",
+      "TensorFlow",
+      "Swift",
+      "CoreML"
+    ],
+    "skillsMissing": [
+      "Objective-C"
+    ],
     "date": "2026-03-25",
     "status": "resume_ready"
   },
@@ -20,8 +27,15 @@
     "match": 88,
     "location": "Mountain View, CA",
     "url": "https://careers.google.com/jobs/results/12345",
-    "skillsHave": ["Python", "Kubernetes", "GCP", "Go"],
-    "skillsMissing": ["Spanner"],
+    "skillsHave": [
+      "Python",
+      "Kubernetes",
+      "GCP",
+      "Go"
+    ],
+    "skillsMissing": [
+      "Spanner"
+    ],
     "date": "2026-03-25",
     "status": "applied"
   },
@@ -33,8 +47,15 @@
     "match": 85,
     "location": "San Francisco, CA",
     "url": "https://stripe.com/jobs/listing/12345",
-    "skillsHave": ["TypeScript", "React", "Ruby", "PostgreSQL"],
-    "skillsMissing": ["Scala"],
+    "skillsHave": [
+      "TypeScript",
+      "React",
+      "Ruby",
+      "PostgreSQL"
+    ],
+    "skillsMissing": [
+      "Scala"
+    ],
     "date": "2026-03-24",
     "status": "new"
   },
@@ -46,7 +67,12 @@
     "match": 94,
     "location": "San Francisco, CA",
     "url": "https://boards.greenhouse.io/anthropic/jobs/12345",
-    "skillsHave": ["Python", "PyTorch", "RLHF", "Transformers"],
+    "skillsHave": [
+      "Python",
+      "PyTorch",
+      "RLHF",
+      "Transformers"
+    ],
     "skillsMissing": [],
     "date": "2026-03-25",
     "status": "interviewing"
@@ -59,8 +85,15 @@
     "match": 76,
     "location": "Menlo Park, CA",
     "url": "https://metacareers.com/jobs/12345",
-    "skillsHave": ["C++", "Python", "Computer Vision"],
-    "skillsMissing": ["Unity", "OpenXR"],
+    "skillsHave": [
+      "C++",
+      "Python",
+      "Computer Vision"
+    ],
+    "skillsMissing": [
+      "Unity",
+      "OpenXR"
+    ],
     "date": "2026-03-24",
     "status": "new"
   },
@@ -72,8 +105,15 @@
     "match": 81,
     "location": "Remote",
     "url": "https://jobs.netflix.com/jobs/12345",
-    "skillsHave": ["Java", "Spring Boot", "AWS", "Kafka"],
-    "skillsMissing": ["Cassandra"],
+    "skillsHave": [
+      "Java",
+      "Spring Boot",
+      "AWS",
+      "Kafka"
+    ],
+    "skillsMissing": [
+      "Cassandra"
+    ],
     "date": "2026-03-23",
     "status": "resume_ready"
   },
@@ -85,8 +125,15 @@
     "match": 90,
     "location": "San Francisco, CA",
     "url": "https://openai.com/careers/12345",
-    "skillsHave": ["Python", "FastAPI", "Redis", "Docker"],
-    "skillsMissing": ["Rust"],
+    "skillsHave": [
+      "Python",
+      "FastAPI",
+      "Redis",
+      "Docker"
+    ],
+    "skillsMissing": [
+      "Rust"
+    ],
     "date": "2026-03-25",
     "status": "offer"
   },
@@ -98,9 +145,431 @@
     "match": 72,
     "location": "Palo Alto, CA",
     "url": "https://tesla.com/careers/12345",
-    "skillsHave": ["C++", "Python", "CUDA"],
-    "skillsMissing": ["ROS", "Lidar Processing"],
+    "skillsHave": [
+      "C++",
+      "Python",
+      "CUDA"
+    ],
+    "skillsMissing": [
+      "ROS",
+      "Lidar Processing"
+    ],
     "date": "2026-03-22",
     "status": "rejected"
+  },
+  {
+    "id": "anthropic-gh-5134895008",
+    "company": "Anthropic",
+    "role": "Senior Staff Software Engineer, API",
+    "location": "San Francisco, CA | New York City, NY",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5134895008",
+    "salary": 405000,
+    "scrapedAt": "2026-03-26T22:09:21.223101+00:00",
+    "match": 83,
+    "skillsHave": [
+      "AWS",
+      "Azure",
+      "GCP",
+      "GIT",
+      "GO",
+      "Kubernetes",
+      "Postgresql",
+      "Python",
+      "React",
+      "Rust"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-5120512008",
+    "company": "Anthropic",
+    "role": "Staff+ Software Security Engineer",
+    "location": "San Francisco, CA | New York City, NY | Seattle, WA",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5120512008",
+    "salary": 405000,
+    "scrapedAt": "2026-03-26T22:09:21.234997+00:00",
+    "match": 80,
+    "skillsHave": [
+      "AWS",
+      "C++",
+      "Ci/Cd",
+      "GIT",
+      "GO",
+      "Kubernetes",
+      "Linux",
+      "Python",
+      "Rust"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-5110511008",
+    "company": "Anthropic",
+    "role": "Staff+ Software Engineer, Developer Productivity",
+    "location": "San Francisco, CA | New York City, NY | Seattle, WA",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5110511008",
+    "salary": 405000,
+    "scrapedAt": "2026-03-26T22:09:21.233588+00:00",
+    "match": 75,
+    "skillsHave": [
+      "AWS",
+      "Ci/Cd",
+      "Docker",
+      "GIT",
+      "GO",
+      "Python",
+      "Rust",
+      "Scala"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-5139910008",
+    "company": "Anthropic",
+    "role": "Staff+ Software Engineer, Observability",
+    "location": "San Francisco, CA | New York City, NY | Seattle, WA",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5139910008",
+    "salary": 405000,
+    "scrapedAt": "2026-03-26T22:09:21.233873+00:00",
+    "match": 74,
+    "skillsHave": [
+      "AWS",
+      "GIT",
+      "GO",
+      "Kubernetes",
+      "Python",
+      "Rust",
+      "Scala"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-5114768008",
+    "company": "Anthropic",
+    "role": "Staff+ Software Engineer, Data Infrastructure",
+    "location": "San Francisco, CA | Seattle, WA",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5114768008",
+    "salary": 405000,
+    "scrapedAt": "2026-03-26T22:09:21.233338+00:00",
+    "match": 73,
+    "skillsHave": [
+      "AWS",
+      "GCP",
+      "GIT",
+      "GO",
+      "Java",
+      "Kubernetes",
+      "Python",
+      "Rust",
+      "SQL",
+      "Scala"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-5159146008",
+    "company": "Anthropic",
+    "role": "Staff+ Software Engineer, Privacy",
+    "location": "San Francisco, CA | New York City, NY | Seattle, WA",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5159146008",
+    "salary": 405000,
+    "scrapedAt": "2026-03-26T22:09:21.234454+00:00",
+    "match": 73,
+    "skillsHave": [
+      "AWS",
+      "GIT",
+      "GO",
+      "Python",
+      "Rust",
+      "Scala"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-5108817008",
+    "company": "Anthropic",
+    "role": "Staff+ Software Engineer, Systems",
+    "location": "San Francisco, CA | New York City, NY | Seattle, WA",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5108817008",
+    "salary": 405000,
+    "scrapedAt": "2026-03-26T22:09:21.234679+00:00",
+    "match": 72,
+    "skillsHave": [
+      "AWS",
+      "GCP",
+      "GIT",
+      "GO",
+      "Java",
+      "Kubernetes",
+      "Linux",
+      "Machine Learning",
+      "Python",
+      "Rust"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "discord-gh-8400845002",
+    "company": "Discord",
+    "role": "Principal Software Engineer - Infrastructure",
+    "location": "San Francisco Bay Area",
+    "url": "https://job-boards.greenhouse.io/discord/jobs/8400845002",
+    "salary": 400000,
+    "scrapedAt": "2026-03-26T22:09:23.958463+00:00",
+    "match": 66,
+    "skillsHave": [
+      "Elasticsearch",
+      "GIT",
+      "GO",
+      "Python",
+      "Rust",
+      "Scala"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-5113224008",
+    "company": "Anthropic",
+    "role": "Staff / Senior Software Engineer, AI Reliability",
+    "location": "San Francisco, CA | New York City, NY | Seattle, WA",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5113224008",
+    "salary": 325000,
+    "scrapedAt": "2026-03-26T22:09:21.230994+00:00",
+    "match": 70,
+    "skillsHave": [
+      "AWS",
+      "GIT",
+      "GO",
+      "Rust"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-5026097008",
+    "company": "Anthropic",
+    "role": "UI Software Engineer, Claude.ai Consumer Product ",
+    "location": "San Francisco, CA | New York City, NY | Seattle, WA",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5026097008",
+    "salary": 320000,
+    "scrapedAt": "2026-03-26T22:09:21.235391+00:00",
+    "match": 90,
+    "skillsHave": [
+      "AWS",
+      "GIT",
+      "GO",
+      "Next.Js",
+      "Node.Js",
+      "React",
+      "Rust",
+      "Typescript"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-4816198008",
+    "company": "Anthropic",
+    "role": "Software Engineer, Claude Code",
+    "location": "New York City, NY; San Francisco, CA; Seattle, WA",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4816198008",
+    "salary": 320000,
+    "scrapedAt": "2026-03-26T22:09:21.225424+00:00",
+    "match": 88,
+    "skillsHave": [
+      "AWS",
+      "GIT",
+      "GO",
+      "Java",
+      "Javascript",
+      "Python",
+      "React",
+      "Rust",
+      "Scala",
+      "Typescript"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-4988878008",
+    "company": "Anthropic",
+    "role": "Staff Software Engineer, Claude Developer Platform (Backend)",
+    "location": "New York City, NY; San Francisco, CA",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4988878008",
+    "salary": 320000,
+    "scrapedAt": "2026-03-26T22:09:21.232584+00:00",
+    "match": 87,
+    "skillsHave": [
+      "AWS",
+      "GCP",
+      "GIT",
+      "GO",
+      "Kubernetes",
+      "Postgresql",
+      "Python",
+      "React",
+      "Rust",
+      "SQL"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-5098025008",
+    "company": "Anthropic",
+    "role": "Model Quality Software Engineer, Claude Code",
+    "location": "San Francisco, CA | New York City, NY",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5098025008",
+    "salary": 320000,
+    "scrapedAt": "2026-03-26T22:09:21.219668+00:00",
+    "match": 86,
+    "skillsHave": [
+      "AWS",
+      "GIT",
+      "GO",
+      "Python",
+      "Rust",
+      "Typescript"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-5123039008",
+    "company": "Anthropic",
+    "role": "Software Engineer, Account Abuse",
+    "location": "San Francisco, CA | New York City, NY",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5123039008",
+    "salary": 320000,
+    "scrapedAt": "2026-03-26T22:09:21.223875+00:00",
+    "match": 86,
+    "skillsHave": [
+      "AWS",
+      "GIT",
+      "GO",
+      "Python",
+      "Rust",
+      "SQL"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-4951844008",
+    "company": "Anthropic",
+    "role": "Software Engineer, Safeguards",
+    "location": "San Francisco, CA | New York City, NY",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4951844008",
+    "salary": 320000,
+    "scrapedAt": "2026-03-26T22:09:21.229469+00:00",
+    "match": 86,
+    "skillsHave": [
+      "AWS",
+      "GIT",
+      "GO",
+      "Python",
+      "Rust",
+      "Typescript"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-4673416008",
+    "company": "Anthropic",
+    "role": "Software Engineer, UI Platform",
+    "location": "San Francisco, CA | New York City, NY",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4673416008",
+    "salary": 320000,
+    "scrapedAt": "2026-03-26T22:09:21.230358+00:00",
+    "match": 85,
+    "skillsHave": [
+      "AWS",
+      "Ci/Cd",
+      "GIT",
+      "GO",
+      "Next.Js",
+      "React",
+      "Rust",
+      "Typescript"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-5098506008",
+    "company": "Anthropic",
+    "role": "Software Engineer, Windows (Claude Code)",
+    "location": "San Francisco, CA | Seattle, WA",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5098506008",
+    "salary": 320000,
+    "scrapedAt": "2026-03-26T22:09:21.230652+00:00",
+    "match": 85,
+    "skillsHave": [
+      "AWS",
+      "GIT",
+      "GO",
+      "Linux",
+      "Node.Js",
+      "Rust",
+      "Typescript"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-4561282008",
+    "company": "Anthropic",
+    "role": "Staff Software Engineer, Claude Developer Platform (Full Stack)",
+    "location": "San Francisco, CA",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4561282008",
+    "salary": 320000,
+    "scrapedAt": "2026-03-26T22:09:21.232838+00:00",
+    "match": 85,
+    "skillsHave": [
+      "AWS",
+      "GIT",
+      "GO",
+      "Next.Js",
+      "React",
+      "Rest Api",
+      "Rust"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-4887959008",
+    "company": "Anthropic",
+    "role": "Senior Software Security Engineer",
+    "location": "San Francisco, CA | New York City, NY | Seattle, WA",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4887959008",
+    "salary": 320000,
+    "scrapedAt": "2026-03-26T22:09:21.222794+00:00",
+    "match": 80,
+    "skillsHave": [
+      "AWS",
+      "Ci/Cd",
+      "GIT",
+      "GO",
+      "Kubernetes",
+      "Python",
+      "Rust"
+    ],
+    "skillsNeed": []
+  },
+  {
+    "id": "anthropic-gh-4980420008",
+    "company": "Anthropic",
+    "role": "Software Engineer, Desktop",
+    "location": "San Francisco, CA | Seattle, WA",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/4980420008",
+    "salary": 320000,
+    "scrapedAt": "2026-03-26T22:09:21.226322+00:00",
+    "match": 80,
+    "skillsHave": [
+      "AWS",
+      "C++",
+      "GIT",
+      "GO",
+      "Java",
+      "Javascript",
+      "React",
+      "Rust",
+      "Scala",
+      "Swift"
+    ],
+    "skillsNeed": []
   }
 ]

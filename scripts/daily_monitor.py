@@ -14,6 +14,7 @@ import argparse
 import json
 import os
 import re
+import shutil
 import ssl
 import subprocess
 import sys
@@ -284,6 +285,20 @@ def compile_latex_to_pdf(tex_path: Path, output_dir: Path) -> bool:
     except (subprocess.TimeoutExpired, FileNotFoundError):
         return False
 
+def generate_tailored_resume_pdf(job: dict, master_pdf: Path, config: dict) -> Optional[Path]:
+    """Copy PDF resume with a tailored filename for each job."""
+    company = job.get("company", "Company")
+    today = datetime.now().strftime("%Y-%m-%d")
+    date_dir = TAILORED_DIR / today
+    date_dir.mkdir(parents=True, exist_ok=True)
+    
+    name_clean = sanitize_name(config.get("name", "Resume"))
+    company_clean = sanitize_name(company)
+    pdf_path = date_dir / f"{name_clean}_{company_clean}.pdf"
+    
+    shutil.copy2(master_pdf, pdf_path)
+    return pdf_path
+
 # ============================================================================
 # STATUS TRACKING
 # ============================================================================
@@ -420,7 +435,13 @@ def main():
         print("[!] Update 'master_resume' in config.json with your resume path")
         return 1
     
-    master_tex = master_resume_path.read_text()
+    is_pdf_resume = master_resume_path.suffix.lower() == '.pdf'
+    master_tex = None if is_pdf_resume else master_resume_path.read_text()
+    
+    if is_pdf_resume:
+        print(f"[*] Using PDF master resume: {master_resume_path.name}")
+    else:
+        print(f"[*] Using LaTeX master resume: {master_resume_path.name}")
     
     # Scrape
     jobs = scrape_and_filter(config)
@@ -440,7 +461,10 @@ def main():
         print(f"{i:2}. [{job['match']:2}%] {job['company']:20} | {job['role'][:35]:35} | {salary_str}")
         
         if job["match"] >= min_match:
-            path = generate_tailored_resume(job, master_tex, config)
+            if is_pdf_resume:
+                path = generate_tailored_resume_pdf(job, master_resume_path, config)
+            else:
+                path = generate_tailored_resume(job, master_tex, config)
             if path:
                 resumes_created.append((job, path))
                 update_job_status(job["id"], "resume_ready", str(path))
