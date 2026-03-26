@@ -1,0 +1,2 @@
+# Sneha Job Tracker Requirements
+# All dependencies are stdlib - no external packages needed

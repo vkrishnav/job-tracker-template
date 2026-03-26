@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.jobtracker.daily</string>
+    
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <!-- UPDATE THIS PATH -->
+        <string>/path/to/job-tracker/scripts/daily_monitor.py</string>
+    </array>
+    
+    <!-- Run daily at 8:00 AM -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>8</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    
+    <key>StandardOutPath</key>
+    <!-- UPDATE THIS PATH -->
+    <string>/path/to/job-tracker/logs/daily.log</string>
+    
+    <key>StandardErrorPath</key>
+    <!-- UPDATE THIS PATH -->
+    <string>/path/to/job-tracker/logs/daily-error.log</string>
+    
+    <key>WorkingDirectory</key>
+    <!-- UPDATE THIS PATH -->
+    <string>/path/to/job-tracker</string>
+    
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/Library/TeX/texbin</string>
+    </dict>
+</dict>
+</plist>

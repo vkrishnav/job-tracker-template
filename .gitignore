@@ -1,0 +1,28 @@
+# Data (generated)
+data/
+tailored-resumes/
+logs/
+
+# Config (contains personal info)
+config.json
+
+# LaTeX aux files
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp

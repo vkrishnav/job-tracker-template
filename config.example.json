@@ -1,0 +1,41 @@
+{
+  "name": "Your Name",
+  "email": "your.email@example.com",
+  "phone": "(555) 123-4567",
+  "linkedin": "linkedin.com/in/yourprofile",
+  "location": "City, State",
+  
+  "master_resume": "~/Documents/resume.tex",
+  
+  "target_locations": ["remote", "your city", "nearby city"],
+  "exclude_locations": ["india", "canada only", "uk only", "europe only"],
+  
+  "min_match_percent": 70,
+  "top_jobs_count": 15,
+  
+  "skills": {
+    "strong": [
+      "skill1", "skill2", "skill3"
+    ],
+    "proficient": [
+      "skill4", "skill5", "skill6"
+    ],
+    "familiar": [
+      "skill7", "skill8", "skill9"
+    ]
+  },
+  
+  "target_roles": [
+    "software engineer",
+    "senior software engineer",
+    "full stack engineer"
+  ],
+  
+  "years_experience": 5,
+  
+  "companies": {
+    "anthropic": {"api": "greenhouse", "board": "anthropic"},
+    "openai": {"api": "ashby", "board": "openai"},
+    "stripe": {"api": "greenhouse", "board": "stripe"}
+  }
+}
