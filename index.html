@@ -441,6 +441,15 @@ tbody tr:last-child td {
   cursor: not-allowed;
   border: 1px solid var(--border-subtle);
 }
+.btn-tertiary {
+  background: var(--purple-bg);
+  color: var(--purple);
+  border: 1px solid rgba(191, 90, 242, 0.3);
+}
+.btn-tertiary:hover {
+  background: rgba(191, 90, 242, 0.2);
+  transform: scale(1.02);
+}
 
 /* ===== Empty State ===== */
 .empty-state {
@@ -787,6 +796,15 @@ tbody tr:last-child td {
   height: 18px;
   fill: currentColor;
 }
+.rc-btn-cover {
+  background: var(--purple-bg);
+  color: var(--purple);
+  border: 1px solid rgba(191, 90, 242, 0.3);
+}
+.rc-btn-cover:hover {
+  background: rgba(191, 90, 242, 0.2);
+  box-shadow: 0 4px 20px rgba(191, 90, 242, 0.3);
+}
 .rc-btn-apply {
   background: rgba(255, 255, 255, 0.08);
   color: var(--text-primary);
@@ -979,6 +997,8 @@ async function init() {
     if (statusData[j.id]) {
       j.status = statusData[j.id].status || 'new';
       j.resumePath = statusData[j.id].resume || null;
+      j.cover = statusData[j.id].cover || null;
+      j.notes = statusData[j.id].notes || null;
     } else {
       j.status = 'new';
     }
@@ -1041,8 +1061,19 @@ function getResumeUrl(job) {
   if (!job.resumePath) return 'Sneha_Resume.pdf';
   let path = job.resumePath
     .replace('/workspace/sneha-job-tracker/', '')
-    .replace('/Users/vamsiv/.openclaw/workspace/sneha-job-tracker/', '');
+    .replace('/Users/vamsiv/.openclaw/workspace/sneha-job-tracker/', '')
+    .replace('/workspace/job-tracker-template/', '');
   return path;
+}
+
+function getCoverUrl(job) {
+  if (!job.cover) return null;
+  return job.cover.replace('/workspace/job-tracker-template/', '');
+}
+
+function getNotesUrl(job) {
+  if (!job.notes) return null;
+  return job.notes.replace('/workspace/job-tracker-template/', '');
 }
 
 function render() {
@@ -1106,8 +1137,12 @@ function render() {
           <div class="actions-cell">
             <a href="${escapeHtml(j.url)}" target="_blank" class="action-btn btn-primary">Apply →</a>
             ${resumeUrl
-              ? `<a href="${escapeHtml(resumeUrl)}" download class="action-btn btn-secondary">${resumeUrl.endsWith('.pdf') ? '📄 PDF' : '📝 LaTeX'}</a>`
+              ? `<a href="${escapeHtml(resumeUrl)}" download class="action-btn btn-secondary">📄 Resume</a>`
               : `<span class="action-btn btn-disabled">No Resume</span>`
+            }
+            ${getCoverUrl(j)
+              ? `<a href="${escapeHtml(getCoverUrl(j))}" download class="action-btn btn-tertiary">📝 Cover</a>`
+              : ''
             }
           </div>
         </td>
@@ -1152,10 +1187,15 @@ function renderResumeCards(visible, container) {
         <div class="rc-actions">
           <a href="${escapeHtml(resumeUrl)}" download class="rc-btn rc-btn-download">
             <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-            Download Resume PDF
+            Resume
           </a>
+          ${getCoverUrl(j) ? `
+          <a href="${escapeHtml(getCoverUrl(j))}" download class="rc-btn rc-btn-cover">
+            📝 Cover Letter
+          </a>
+          ` : ''}
           <a href="${escapeHtml(j.url)}" target="_blank" class="rc-btn rc-btn-apply">
-            Apply Now →
+            Apply →
           </a>
         </div>
       </div>

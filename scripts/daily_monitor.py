@@ -289,9 +289,15 @@ def compile_latex_to_pdf(tex_path: Path, output_dir: Path) -> bool:
         return False
 
 def generate_tailored_resume_pdf(job: dict, master_pdf: Path, config: dict) -> Optional[Path]:
-    """Copy PDF resume with a tailored filename for each job."""
+    """Copy PDF resume with a tailored filename and generate tailoring notes + cover letter."""
     company = job.get("company", "Company")
     role = job.get("role", "Software Engineer")
+    location = job.get("location", "Remote")
+    skills_have = job.get("skillsHave", [])
+    skills_need = job.get("skillsNeed", [])
+    match_pct = job.get("match", 0)
+    url = job.get("url", "")
+    
     today = datetime.now().strftime("%Y-%m-%d")
     date_dir = TAILORED_DIR / today
     date_dir.mkdir(parents=True, exist_ok=True)
@@ -300,9 +306,77 @@ def generate_tailored_resume_pdf(job: dict, master_pdf: Path, config: dict) -> O
     company_clean = sanitize_name(company)
     role_words = [w for w in sanitize_name(role).split('_') if w.lower() not in ('software', 'engineer', 'senior', 'staff', 'principal')]
     role_tag = '_'.join(role_words[:2]) if role_words else 'SWE'
-    pdf_path = date_dir / f"{name_clean}_{company_clean}_{role_tag}.pdf"
+    base_name = f"{name_clean}_{company_clean}_{role_tag}"
     
+    pdf_path = date_dir / f"{base_name}.pdf"
+    notes_path = date_dir / f"{base_name}_notes.json"
+    cover_path = date_dir / f"{base_name}_cover.md"
+    
+    # Copy PDF
     shutil.copy2(master_pdf, pdf_path)
+    
+    # Generate tailoring notes
+    notes = {
+        "job": {
+            "company": company,
+            "role": role,
+            "location": location,
+            "url": url,
+            "matchScore": match_pct,
+        },
+        "skills": {
+            "matching": skills_have,
+            "toLearn": skills_need,
+        },
+        "talkingPoints": [
+            f"Emphasize experience with: {', '.join(skills_have[:5])}" if skills_have else "Highlight relevant projects",
+            f"Company focus: {company} is known for...",  # User can fill in
+            f"Role alignment: This {role} position matches your background in...",
+        ],
+        "keywords": skills_have[:8],
+        "generated": datetime.now().isoformat(),
+    }
+    notes_path.write_text(json.dumps(notes, indent=2))
+    
+    # Generate cover letter template
+    user_name = config.get("name", "Applicant")
+    cover_letter = f"""# Cover Letter — {company}
+
+**{user_name}**  
+{config.get("email", "")} | {config.get("phone", "")}  
+{config.get("location", "")}
+
+---
+
+**{company}**  
+**Re: {role}**
+
+Dear Hiring Manager,
+
+I am excited to apply for the **{role}** position at **{company}**. With my background in {', '.join(skills_have[:3]) if skills_have else 'software engineering'}, I am confident I can contribute to your team's success.
+
+**Why {company}?**  
+[Your reason for wanting to work at {company} — research their mission, products, culture]
+
+**What I Bring:**  
+- **Technical Skills:** {', '.join(skills_have[:5]) if skills_have else 'Strong engineering foundation'}
+- **Relevant Experience:** [Highlight 1-2 specific achievements that align with this role]
+- **Impact:** [Quantify your contributions — metrics, scale, outcomes]
+
+**Skills Alignment ({match_pct}% match):**  
+Your job description emphasizes: {', '.join(skills_have[:6]) if skills_have else 'core engineering skills'}
+
+I would welcome the opportunity to discuss how my experience aligns with {company}'s goals. Thank you for considering my application.
+
+Best regards,  
+{user_name}
+
+---
+*Application URL: {url}*  
+*Generated: {datetime.now().strftime("%Y-%m-%d %H:%M")}*
+"""
+    cover_path.write_text(cover_letter)
+    
     return pdf_path
 
 # ============================================================================
@@ -330,6 +404,10 @@ def update_job_status(job_id: str, status: str, resume_path: Optional[str] = Non
     if resume_path:
         rel_path = str(resume_path).replace(str(BASE_DIR) + "/", "")
         data["jobs"][job_id]["resume"] = rel_path
+        # Also track cover letter and notes
+        base = rel_path.rsplit('.', 1)[0]
+        data["jobs"][job_id]["cover"] = f"{base}_cover.md"
+        data["jobs"][job_id]["notes"] = f"{base}_notes.json"
     
     save_status(data)
 

@@ -1,170 +1,12 @@
 [
   {
-    "id": "apple-swe-001",
-    "company": "Apple",
-    "role": "Senior Software Engineer, Machine Learning",
-    "salary": 245000,
-    "match": 92,
-    "location": "Cupertino, CA",
-    "url": "https://jobs.apple.com/en-us/details/200554359",
-    "skillsHave": [
-      "Python",
-      "TensorFlow",
-      "Swift",
-      "CoreML"
-    ],
-    "skillsMissing": [
-      "Objective-C"
-    ],
-    "date": "2026-03-25",
-    "status": "resume_ready"
-  },
-  {
-    "id": "google-swe-002",
-    "company": "Google",
-    "role": "Staff Software Engineer, Cloud AI",
-    "salary": 280000,
-    "match": 88,
-    "location": "Mountain View, CA",
-    "url": "https://careers.google.com/jobs/results/12345",
-    "skillsHave": [
-      "Python",
-      "Kubernetes",
-      "GCP",
-      "Go"
-    ],
-    "skillsMissing": [
-      "Spanner"
-    ],
-    "date": "2026-03-25",
-    "status": "applied"
-  },
-  {
-    "id": "stripe-swe-003",
-    "company": "Stripe",
-    "role": "Full Stack Engineer, Payments Platform",
-    "salary": 230000,
-    "match": 85,
-    "location": "San Francisco, CA",
-    "url": "https://stripe.com/jobs/listing/12345",
-    "skillsHave": [
-      "TypeScript",
-      "React",
-      "Ruby",
-      "PostgreSQL"
-    ],
-    "skillsMissing": [
-      "Scala"
-    ],
-    "date": "2026-03-24",
-    "status": "new"
-  },
-  {
-    "id": "anthropic-swe-004",
-    "company": "Anthropic",
-    "role": "Research Engineer, Constitutional AI",
-    "salary": 310000,
-    "match": 94,
-    "location": "San Francisco, CA",
-    "url": "https://boards.greenhouse.io/anthropic/jobs/12345",
-    "skillsHave": [
-      "Python",
-      "PyTorch",
-      "RLHF",
-      "Transformers"
-    ],
-    "skillsMissing": [],
-    "date": "2026-03-25",
-    "status": "interviewing"
-  },
-  {
-    "id": "meta-swe-005",
-    "company": "Meta",
-    "role": "Software Engineer, Reality Labs",
-    "salary": 255000,
-    "match": 76,
-    "location": "Menlo Park, CA",
-    "url": "https://metacareers.com/jobs/12345",
-    "skillsHave": [
-      "C++",
-      "Python",
-      "Computer Vision"
-    ],
-    "skillsMissing": [
-      "Unity",
-      "OpenXR"
-    ],
-    "date": "2026-03-24",
-    "status": "new"
-  },
-  {
-    "id": "netflix-swe-006",
-    "company": "Netflix",
-    "role": "Senior Software Engineer, Content Platform",
-    "salary": 270000,
-    "match": 81,
-    "location": "Remote",
-    "url": "https://jobs.netflix.com/jobs/12345",
-    "skillsHave": [
-      "Java",
-      "Spring Boot",
-      "AWS",
-      "Kafka"
-    ],
-    "skillsMissing": [
-      "Cassandra"
-    ],
-    "date": "2026-03-23",
-    "status": "resume_ready"
-  },
-  {
-    "id": "openai-swe-007",
-    "company": "OpenAI",
-    "role": "Platform Engineer, API Infrastructure",
-    "salary": 300000,
-    "match": 90,
-    "location": "San Francisco, CA",
-    "url": "https://openai.com/careers/12345",
-    "skillsHave": [
-      "Python",
-      "FastAPI",
-      "Redis",
-      "Docker"
-    ],
-    "skillsMissing": [
-      "Rust"
-    ],
-    "date": "2026-03-25",
-    "status": "offer"
-  },
-  {
-    "id": "tesla-swe-008",
-    "company": "Tesla",
-    "role": "Autopilot Software Engineer",
-    "salary": 220000,
-    "match": 72,
-    "location": "Palo Alto, CA",
-    "url": "https://tesla.com/careers/12345",
-    "skillsHave": [
-      "C++",
-      "Python",
-      "CUDA"
-    ],
-    "skillsMissing": [
-      "ROS",
-      "Lidar Processing"
-    ],
-    "date": "2026-03-22",
-    "status": "rejected"
-  },
-  {
     "id": "anthropic-gh-5134895008",
     "company": "Anthropic",
     "role": "Senior Staff Software Engineer, API",
     "location": "San Francisco, CA | New York City, NY",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/5134895008",
     "salary": 405000,
-    "scrapedAt": "2026-03-26T22:16:26.110992+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.494921+00:00",
     "match": 83,
     "skillsHave": [
       "AWS",
@@ -187,7 +29,7 @@
     "location": "San Francisco, CA | New York City, NY | Seattle, WA",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/5120512008",
     "salary": 405000,
-    "scrapedAt": "2026-03-26T22:16:26.123634+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.504624+00:00",
     "match": 80,
     "skillsHave": [
       "AWS",
@@ -209,7 +51,7 @@
     "location": "San Francisco, CA | New York City, NY | Seattle, WA",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/5110511008",
     "salary": 405000,
-    "scrapedAt": "2026-03-26T22:16:26.122167+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.503465+00:00",
     "match": 75,
     "skillsHave": [
       "AWS",
@@ -230,7 +72,7 @@
     "location": "San Francisco, CA | New York City, NY | Seattle, WA",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/5139910008",
     "salary": 405000,
-    "scrapedAt": "2026-03-26T22:16:26.122467+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.503704+00:00",
     "match": 74,
     "skillsHave": [
       "AWS",
@@ -250,7 +92,7 @@
     "location": "San Francisco, CA | Seattle, WA",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/5114768008",
     "salary": 405000,
-    "scrapedAt": "2026-03-26T22:16:26.121893+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.503272+00:00",
     "match": 73,
     "skillsHave": [
       "AWS",
@@ -273,7 +115,7 @@
     "location": "San Francisco, CA | New York City, NY | Seattle, WA",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/5159146008",
     "salary": 405000,
-    "scrapedAt": "2026-03-26T22:16:26.123072+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.504169+00:00",
     "match": 73,
     "skillsHave": [
       "AWS",
@@ -292,7 +134,7 @@
     "location": "San Francisco, CA | New York City, NY | Seattle, WA",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/5108817008",
     "salary": 405000,
-    "scrapedAt": "2026-03-26T22:16:26.123302+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.504337+00:00",
     "match": 72,
     "skillsHave": [
       "AWS",
@@ -315,7 +157,7 @@
     "location": "San Francisco Bay Area",
     "url": "https://job-boards.greenhouse.io/discord/jobs/8400845002",
     "salary": 400000,
-    "scrapedAt": "2026-03-26T22:16:28.755429+00:00",
+    "scrapedAt": "2026-03-26T22:25:54.312115+00:00",
     "match": 66,
     "skillsHave": [
       "Elasticsearch",
@@ -334,7 +176,7 @@
     "location": "San Francisco, CA | New York City, NY | Seattle, WA",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/5113224008",
     "salary": 325000,
-    "scrapedAt": "2026-03-26T22:16:26.119327+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.501300+00:00",
     "match": 70,
     "skillsHave": [
       "AWS",
@@ -351,7 +193,7 @@
     "location": "San Francisco, CA | New York City, NY | Seattle, WA",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/5026097008",
     "salary": 320000,
-    "scrapedAt": "2026-03-26T22:16:26.124039+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.504971+00:00",
     "match": 90,
     "skillsHave": [
       "AWS",
@@ -372,7 +214,7 @@
     "location": "New York City, NY; San Francisco, CA; Seattle, WA",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/4816198008",
     "salary": 320000,
-    "scrapedAt": "2026-03-26T22:16:26.113322+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.496735+00:00",
     "match": 88,
     "skillsHave": [
       "AWS",
@@ -395,7 +237,7 @@
     "location": "New York City, NY; San Francisco, CA",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/4988878008",
     "salary": 320000,
-    "scrapedAt": "2026-03-26T22:16:26.121059+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.502685+00:00",
     "match": 87,
     "skillsHave": [
       "AWS",
@@ -418,7 +260,7 @@
     "location": "San Francisco, CA | New York City, NY",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/5098025008",
     "salary": 320000,
-    "scrapedAt": "2026-03-26T22:16:26.107182+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.491156+00:00",
     "match": 86,
     "skillsHave": [
       "AWS",
@@ -437,7 +279,7 @@
     "location": "San Francisco, CA | New York City, NY",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/5123039008",
     "salary": 320000,
-    "scrapedAt": "2026-03-26T22:16:26.111827+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.495622+00:00",
     "match": 86,
     "skillsHave": [
       "AWS",
@@ -456,7 +298,7 @@
     "location": "San Francisco, CA | New York City, NY",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/4951844008",
     "salary": 320000,
-    "scrapedAt": "2026-03-26T22:16:26.117716+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.499985+00:00",
     "match": 86,
     "skillsHave": [
       "AWS",
@@ -475,7 +317,7 @@
     "location": "San Francisco, CA | New York City, NY",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/4673416008",
     "salary": 320000,
-    "scrapedAt": "2026-03-26T22:16:26.118648+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.500735+00:00",
     "match": 85,
     "skillsHave": [
       "AWS",
@@ -496,7 +338,7 @@
     "location": "San Francisco, CA | Seattle, WA",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/5098506008",
     "salary": 320000,
-    "scrapedAt": "2026-03-26T22:16:26.118961+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.500989+00:00",
     "match": 85,
     "skillsHave": [
       "AWS",
@@ -516,7 +358,7 @@
     "location": "San Francisco, CA",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/4561282008",
     "salary": 320000,
-    "scrapedAt": "2026-03-26T22:16:26.121332+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.502866+00:00",
     "match": 85,
     "skillsHave": [
       "AWS",
@@ -536,7 +378,7 @@
     "location": "San Francisco, CA | New York City, NY | Seattle, WA",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/4887959008",
     "salary": 320000,
-    "scrapedAt": "2026-03-26T22:16:26.110661+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.494624+00:00",
     "match": 80,
     "skillsHave": [
       "AWS",
@@ -556,7 +398,7 @@
     "location": "San Francisco, CA | Seattle, WA",
     "url": "https://job-boards.greenhouse.io/anthropic/jobs/4980420008",
     "salary": 320000,
-    "scrapedAt": "2026-03-26T22:16:26.114255+00:00",
+    "scrapedAt": "2026-03-26T22:25:51.497407+00:00",
     "match": 80,
     "skillsHave": [
       "AWS",
