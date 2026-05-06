@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "Bash(npx create-vite@latest . --template react)",
+      "Bash(npx --yes create-vite@latest . --template react --force)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(npx create-vite@latest job-tracker-template --template react)",
+      "Bash(mv /Users/vamsiv/Documents/GIT/job-tracker-template/job-tracker-template/* /Users/vamsiv/Documents/GIT/job-tracker-template/)",
+      "Bash(mv /Users/vamsiv/Documents/GIT/job-tracker-template/job-tracker-template/.* /Users/vamsiv/Documents/GIT/job-tracker-template/)",
+      "Bash(npm install *)",
+      "Bash(npx tailwindcss *)"
+    ]
+  }
+}
