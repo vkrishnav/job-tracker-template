@@ -252,6 +252,28 @@ a:hover { color: var(--accent-hover); }
   border-color: var(--accent);
   box-shadow: 0 2px 12px rgba(0, 113, 227, 0.3);
 }
+.search-input {
+  margin-left: auto;
+  min-width: 220px;
+  padding: 8px 16px;
+  border-radius: 980px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.search-input::placeholder {
+  color: var(--text-tertiary);
+}
+@media (max-width: 768px) {
+  .search-input { margin-left: 0; width: 100%; }
+}
 
 /* ===== Table ===== */
 .table-container {
@@ -911,6 +933,7 @@ tbody tr:last-child td {
     <button class="filter-pill" data-f="new">New</button>
     <button class="filter-pill" data-f="applied">Applied</button>
     <button class="filter-pill" data-f="high_match">80%+ Match</button>
+    <input type="search" class="search-input" id="searchInput" placeholder="Search company, role, location…" aria-label="Search jobs">
   </div>
 
   <!-- Table -->
@@ -974,9 +997,11 @@ const STATUS_DOTS = {
 let jobs = [];
 let statusData = {};
 let filter = 'all';
+let searchQuery = '';
 let sortKey = 'salary';
 let sortDir = -1;
 let currentJobId = null;
+let loadError = false;
 
 async function init() {
   try {
@@ -990,20 +1015,22 @@ async function init() {
   } catch(e) {
     console.error('Failed to load data:', e);
     jobs = [];
+    loadError = true;
   }
 
-  // Merge status into jobs
+  // Merge scraper status into jobs. The scraper's "notes" field is a file
+  // path to tailoring metadata — keep it separate from the user's notes text.
   jobs.forEach(j => {
     if (statusData[j.id]) {
       j.status = statusData[j.id].status || 'new';
       j.resumePath = statusData[j.id].resume || null;
-      j.cover = statusData[j.id].cover || null;
-      j.notes = statusData[j.id].notes || null;
+      j.coverPath = statusData[j.id].cover || null;
     } else {
       j.status = 'new';
     }
   });
 
+  loadSavedData();
   sortJobs();
   render();
   setupFilters();
@@ -1018,6 +1045,13 @@ function setupFilters() {
       filter = btn.dataset.f;
       render();
     });
+  });
+  document.getElementById('searchInput').addEventListener('input', e => {
+    searchQuery = e.target.value.trim().toLowerCase();
+    render();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
   });
 }
 
@@ -1042,6 +1076,10 @@ function sortJobs() {
 }
 
 function filterJobs(j) {
+  if (searchQuery) {
+    const haystack = `${j.company} ${j.role} ${j.location}`.toLowerCase();
+    if (!haystack.includes(searchQuery)) return false;
+  }
   if (filter === 'all') return true;
   if (filter === 'resume_ready') return j.status === 'resume_ready';
   if (filter === 'new') return j.status === 'new';
@@ -1057,23 +1095,20 @@ function matchColor(pct) {
   return 'var(--orange)';
 }
 
+// Paths from status.json are repo-relative; older data may contain absolute
+// paths, so strip anything before the tailored-resumes/ folder.
+function toRelativePath(path) {
+  if (!path) return null;
+  const idx = path.indexOf('tailored-resumes/');
+  return idx >= 0 ? path.slice(idx) : path;
+}
+
 function getResumeUrl(job) {
-  if (!job.resumePath) return 'Sneha_Resume.pdf';
-  let path = job.resumePath
-    .replace('/workspace/sneha-job-tracker/', '')
-    .replace('/Users/vamsiv/.openclaw/workspace/sneha-job-tracker/', '')
-    .replace('/workspace/job-tracker-template/', '');
-  return path;
+  return toRelativePath(job.resumePath) || 'Sneha_Resume.pdf';
 }
 
 function getCoverUrl(job) {
-  if (!job.cover) return null;
-  return job.cover.replace('/workspace/job-tracker-template/', '');
-}
-
-function getNotesUrl(job) {
-  if (!job.notes) return null;
-  return job.notes.replace('/workspace/job-tracker-template/', '');
+  return toRelativePath(job.coverPath);
 }
 
 function render() {
@@ -1087,7 +1122,7 @@ function render() {
     tableContainer.style.display = 'none';
     cardsContainer.style.display = 'grid';
     renderResumeCards(visible, cardsContainer);
-    updateStats(visible);
+    updateStats();
     return;
   } else {
     tableContainer.style.display = '';
@@ -1095,8 +1130,11 @@ function render() {
   }
 
   if (!visible.length) {
-    tbody.innerHTML = '<tr><td colspan="8" class="empty-state">No opportunities found matching your filters.</td></tr>';
-    updateStats([]);
+    const message = loadError
+      ? 'Could not load data/jobs.json. Serve this folder over HTTP: <code>python3 -m http.server 8080</code>'
+      : 'No opportunities found matching your filters.';
+    tbody.innerHTML = `<tr><td colspan="8" class="empty-state">${message}</td></tr>`;
+    updateStats();
     return;
   }
 
@@ -1150,7 +1188,7 @@ function render() {
     `;
   }).join('');
 
-  updateStats(visible);
+  updateStats();
 }
 
 function renderResumeCards(visible, container) {
@@ -1203,7 +1241,7 @@ function renderResumeCards(visible, container) {
   }).join('');
 }
 
-function updateStats(visible) {
+function updateStats() {
   const all = jobs;
   animateCounter('sTotal', all.length);
   animateCounter('sReady', all.filter(j => j.status === 'resume_ready').length);
@@ -1320,7 +1358,7 @@ function loadSavedData() {
   }
 }
 
-init().then(loadSavedData).then(render);
+init();
 </script>
 </body>
 </html>

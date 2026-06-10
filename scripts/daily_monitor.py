@@ -93,6 +93,21 @@ DEFAULT_COMPANIES = {
     "splunk": {"api": "greenhouse", "board": "splunk"},
 }
 
+# Common skills used to detect what a posting asks for beyond the user's own
+# skill list, so skillsNeed reflects real gaps instead of always being empty.
+COMMON_SKILLS = {
+    "python", "java", "javascript", "typescript", "go", "rust", "c++", "c#",
+    "ruby", "swift", "kotlin", "scala", "php", "sql", "html", "css", "bash",
+    "react", "vue", "angular", "svelte", "next.js", "node.js", "django",
+    "flask", "fastapi", "spring", "rails", "graphql", "grpc", "rest",
+    "postgresql", "mysql", "mongodb", "redis", "elasticsearch", "kafka",
+    "spark", "airflow", "snowflake", "dbt",
+    "aws", "gcp", "azure", "docker", "kubernetes", "terraform", "ansible",
+    "jenkins", "git", "linux", "ci/cd", "microservices", "distributed systems",
+    "pytorch", "tensorflow", "machine learning", "deep learning", "nlp", "llm",
+    "prometheus", "grafana", "datadog", "oauth", "observability",
+}
+
 # ============================================================================
 # HTTP HELPERS
 # ============================================================================
@@ -122,15 +137,15 @@ def http_post_json(url: str, payload: dict, timeout: int = 30) -> Optional[dict]
 # API FETCHERS
 # ============================================================================
 
-def fetch_greenhouse(board: str) -> list:
+def fetch_greenhouse(board: str) -> Optional[list]:
     url = f"https://boards-api.greenhouse.io/v1/boards/{board}/jobs?content=true"
     data = http_get(url)
-    return data.get("jobs", []) if data else []
+    return data.get("jobs", []) if data else None
 
-def fetch_lever(board: str) -> list:
+def fetch_lever(board: str) -> Optional[list]:
     url = f"https://api.lever.co/v0/postings/{board}"
     data = http_get(url)
-    return data if isinstance(data, list) else []
+    return data if isinstance(data, list) else None
 
 def fetch_ashby(board: str) -> list:
     url = "https://jobs.ashbyhq.com/api/non-user-graphql?op=ApiJobBoardWithTeams"
@@ -144,7 +159,9 @@ def fetch_ashby(board: str) -> list:
         }"""
     }
     data = http_post_json(url, payload)
-    return data.get("data", {}).get("jobBoard", {}).get("jobPostings", []) if data else []
+    if not data:
+        return None
+    return (data.get("data", {}).get("jobBoard") or {}).get("jobPostings", [])
 
 # ============================================================================
 # MATCHING & FILTERING
@@ -175,47 +192,54 @@ def is_valid_location(loc: str, target_locs: list, exclude_locs: list) -> bool:
     return any(x in loc_lower for x in target_locs)
 
 def extract_salary(text: str) -> Optional[int]:
-    patterns = [
-        r'\$(\d{3}),?(\d{3})',
-        r'\$(\d{2,3})[kK]',
-        r'(\d{3}),?(\d{3})\s*(?:USD|usd)',
-    ]
-    for pattern in patterns:
-        match = re.search(pattern, text)
-        if match:
-            groups = match.groups()
-            if len(groups) == 2 and groups[1]:
-                return int(groups[0] + groups[1])
-            elif len(groups) == 1:
-                return int(groups[0]) * 1000
-    return None
+    """Return the highest plausible salary mentioned (the top of a range)."""
+    candidates = []
+    for m in re.finditer(r'\$(\d{3}),?(\d{3})', text):
+        candidates.append(int(m.group(1) + m.group(2)))
+    for m in re.finditer(r'\$(\d{2,3})[kK]\b', text):
+        candidates.append(int(m.group(1)) * 1000)
+    for m in re.finditer(r'(\d{3}),?(\d{3})\s*(?:USD|usd)', text):
+        candidates.append(int(m.group(1) + m.group(2)))
+    candidates = [c for c in candidates if 30_000 <= c <= 1_500_000]
+    return max(candidates) if candidates else None
+
+_SKILL_PATTERNS: dict = {}
+
+def _skill_pattern(skill: str) -> re.Pattern:
+    # Boundaries that tolerate symbols inside skills like "c++", "c#", "ci/cd"
+    # while preventing substring hits like "go" in "google" or "java" in "javascript".
+    pattern = _SKILL_PATTERNS.get(skill)
+    if pattern is None:
+        pattern = re.compile(r'(?<![a-z0-9+#.])' + re.escape(skill) + r'(?![a-z0-9+#])')
+        _SKILL_PATTERNS[skill] = pattern
+    return pattern
 
 def extract_skills(text: str, all_skills: set) -> set:
     text = text.lower()
-    return {skill for skill in all_skills if skill in text}
+    return {skill for skill in all_skills if _skill_pattern(skill).search(text)}
 
 def calculate_match(job_text: str, skills_strong: set, skills_proficient: set, skills_familiar: set) -> dict:
-    all_skills = skills_strong | skills_proficient | skills_familiar
-    job_skills = extract_skills(job_text, all_skills)
-    
+    user_skills = skills_strong | skills_proficient | skills_familiar
+    job_skills = extract_skills(job_text, user_skills | COMMON_SKILLS)
+
     if not job_skills:
         return {"match": 50, "skillsHave": [], "skillsNeed": []}
-    
-    skills_have = job_skills & all_skills
-    skills_need = job_skills - all_skills
-    
+
+    skills_have = job_skills & user_skills
+    skills_need = job_skills - user_skills
+
     score = sum(
-        3 if s in skills_strong else 
-        2 if s in skills_proficient else 
+        3 if s in skills_strong else
+        2 if s in skills_proficient else
         1 for s in skills_have
     )
     max_score = len(job_skills) * 2.5
     match_pct = min(98, int((score / max_score) * 100)) if max_score else 50
-    
+
     return {
         "match": match_pct,
         "skillsHave": sorted([s.title() if len(s) > 3 else s.upper() for s in skills_have])[:10],
-        "skillsNeed": sorted(list(skills_need))[:5],
+        "skillsNeed": sorted(skills_need)[:5],
     }
 
 # ============================================================================
@@ -223,7 +247,26 @@ def calculate_match(job_text: str, skills_strong: set, skills_proficient: set, s
 # ============================================================================
 
 def sanitize_name(name: str) -> str:
-    return re.sub(r'[^a-zA-Z0-9]', '_', name).strip('_')
+    return re.sub(r'[^a-zA-Z0-9]+', '_', name).strip('_')
+
+def build_resume_basename(job: dict, config: dict, date_dir: Path) -> str:
+    """Build Name_Company_RoleTag, made unique within date_dir so two jobs
+    at the same company never overwrite each other's files."""
+    name_clean = sanitize_name(config.get("name", "Resume"))
+    company_clean = sanitize_name(job.get("company", "Company"))
+    role = job.get("role", "Software Engineer")
+    role_words = [
+        w for w in sanitize_name(role).split('_')
+        if w and w.lower() not in ('software', 'engineer', 'senior', 'staff', 'principal')
+    ]
+    role_tag = '_'.join(role_words[:2]) if role_words else 'SWE'
+    base = f"{name_clean}_{company_clean}_{role_tag}"
+
+    candidate, n = base, 2
+    while (date_dir / f"{candidate}.pdf").exists() or (date_dir / f"{candidate}.tex").exists():
+        candidate = f"{base}_{n}"
+        n += 1
+    return candidate
 
 def escape_latex(text: str) -> str:
     replacements = {
@@ -243,15 +286,8 @@ def generate_tailored_resume(job: dict, master_tex: str, config: dict) -> Option
     today = datetime.now().strftime("%Y-%m-%d")
     date_dir = TAILORED_DIR / today
     date_dir.mkdir(parents=True, exist_ok=True)
-    
-    # Filename: Name_Company_ShortRole.tex
-    name_clean = sanitize_name(config.get("name", "Resume"))
-    company_clean = sanitize_name(company)
-    # Extract a short role tag (first 2 meaningful words)
-    role_words = [w for w in sanitize_name(role).split('_') if w.lower() not in ('software', 'engineer', 'senior', 'staff', 'principal')]
-    role_tag = '_'.join(role_words[:2]) if role_words else 'SWE'
-    base_filename = f"{name_clean}_{company_clean}_{role_tag}"
-    tex_path = date_dir / f"{base_filename}.tex"
+
+    tex_path = date_dir / f"{build_resume_basename(job, config, date_dir)}.tex"
     
     # Add tailoring comment
     tailored_tex = master_tex.replace(
@@ -301,13 +337,8 @@ def generate_tailored_resume_pdf(job: dict, master_pdf: Path, config: dict) -> O
     today = datetime.now().strftime("%Y-%m-%d")
     date_dir = TAILORED_DIR / today
     date_dir.mkdir(parents=True, exist_ok=True)
-    
-    name_clean = sanitize_name(config.get("name", "Resume"))
-    company_clean = sanitize_name(company)
-    role_words = [w for w in sanitize_name(role).split('_') if w.lower() not in ('software', 'engineer', 'senior', 'staff', 'principal')]
-    role_tag = '_'.join(role_words[:2]) if role_words else 'SWE'
-    base_name = f"{name_clean}_{company_clean}_{role_tag}"
-    
+
+    base_name = build_resume_basename(job, config, date_dir)
     pdf_path = date_dir / f"{base_name}.pdf"
     notes_path = date_dir / f"{base_name}_notes.json"
     cover_path = date_dir / f"{base_name}_cover.md"
@@ -394,22 +425,18 @@ def save_status(status: dict):
     with open(STATUS_FILE, "w") as f:
         json.dump(status, f, indent=2)
 
-def update_job_status(job_id: str, status: str, resume_path: Optional[str] = None):
-    data = load_status()
-    if job_id not in data["jobs"]:
-        data["jobs"][job_id] = {"created": datetime.now().isoformat()}
-    
-    data["jobs"][job_id]["status"] = status
-    data["jobs"][job_id]["updated"] = datetime.now().isoformat()
+def update_job_status(data: dict, job_id: str, status: str, resume_path: Optional[str] = None):
+    """Update one job entry in an already-loaded status dict (caller saves)."""
+    entry = data.setdefault("jobs", {}).setdefault(job_id, {"created": datetime.now().isoformat()})
+    entry["status"] = status
+    entry["updated"] = datetime.now().isoformat()
     if resume_path:
         rel_path = str(resume_path).replace(str(BASE_DIR) + "/", "")
-        data["jobs"][job_id]["resume"] = rel_path
+        entry["resume"] = rel_path
         # Also track cover letter and notes
         base = rel_path.rsplit('.', 1)[0]
-        data["jobs"][job_id]["cover"] = f"{base}_cover.md"
-        data["jobs"][job_id]["notes"] = f"{base}_notes.json"
-    
-    save_status(data)
+        entry["cover"] = f"{base}_cover.md"
+        entry["notes"] = f"{base}_notes.json"
 
 # ============================================================================
 # MAIN
@@ -444,15 +471,21 @@ def scrape_and_filter(config: dict) -> list:
     
     for company, cfg in companies.items():
         api, board = cfg["api"], cfg["board"]
-        
-        raw = []
+
         if api == "greenhouse":
             raw = fetch_greenhouse(board)
         elif api == "lever":
             raw = fetch_lever(board)
         elif api == "ashby":
             raw = fetch_ashby(board)
-        
+        else:
+            print(f"  [!] {company}: unknown api '{api}' (expected greenhouse/lever/ashby)")
+            continue
+
+        if raw is None:
+            print(f"  [!] {company}: fetch failed, skipping")
+            continue
+
         for r in raw:
             if api == "greenhouse":
                 title = r.get("title", "")
@@ -539,11 +572,12 @@ def main():
     
     resumes_created = []
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    
+    status_data = load_status()
+
     for i, job in enumerate(top_jobs, 1):
         salary_str = f"${job['salary']:,}" if job.get("salary") else "N/A"
         print(f"{i:2}. [{job['match']:2}%] {job['company']:20} | {job['role'][:35]:35} | {salary_str}")
-        
+
         if job["match"] >= min_match:
             if is_pdf_resume:
                 path = generate_tailored_resume_pdf(job, master_resume_path, config)
@@ -551,11 +585,13 @@ def main():
                 path = generate_tailored_resume(job, master_tex, config)
             if path:
                 resumes_created.append((job, path))
-                update_job_status(job["id"], "resume_ready", str(path))
+                update_job_status(status_data, job["id"], "resume_ready", str(path))
                 icon = "📄" if path.suffix == ".pdf" else "📝"
                 print(f"     ✅ {icon} {path.name}")
         else:
-            update_job_status(job["id"], "new")
+            update_job_status(status_data, job["id"], "new")
+
+    save_status(status_data)
     
     # Save results
     with open(DAILY_FILE, "w") as f:

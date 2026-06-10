@@ -2,7 +2,7 @@
 
 Automated job tracker that scrapes opportunities from top tech companies, filters by your location preferences, matches against your skills, and generates tailored LaTeX resumes.
 
-**Live at:** `http://localhost:8888` (local dev server)
+**Live at:** `http://localhost:8080` (local dev server)
 
 ## ✨ Features
 
