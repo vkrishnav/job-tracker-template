@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
-import { TrendingUp, Briefcase, Clock, CheckCircle, XCircle, AlertCircle, ArrowRight, DollarSign, Baby } from 'lucide-react'
+import { TrendingUp, Briefcase, Clock, CheckCircle, XCircle, AlertCircle, ArrowRight, DollarSign, Baby, Bot, Rss, Inbox, ListChecks } from 'lucide-react'
 import { STATUS_COLORS } from '../data/sampleData'
+import { ago } from '../lib/format'
 
 const ACTIVE_STATUSES = ['Applied', 'Phone Screen', 'Technical Screen', 'Onsite']
 
@@ -10,13 +11,15 @@ function fmt(n) {
   return `$${n}`
 }
 
+const DONE_STATUSES = ['Rejected', 'Closed', 'Withdrawn', 'Accepted']
+
 function isFollowUpDue(job) {
-  if (!job.next_action_date) return false
+  if (!job.next_action_date || DONE_STATUSES.includes(job.status)) return false
   const today = new Date().toISOString().split('T')[0]
   return job.next_action_date <= today
 }
 
-export default function Dashboard({ jobs, onNavigate }) {
+export default function Dashboard({ jobs, state, onNavigate }) {
   const stats = useMemo(() => {
     const total = jobs.length
     const inProgress = jobs.filter(j => ACTIVE_STATUSES.includes(j.status)).length
@@ -41,6 +44,8 @@ export default function Dashboard({ jobs, onNavigate }) {
 
   return (
     <div className="space-y-6">
+      {state && <AgentStrip state={state} onNavigate={onNavigate} />}
+
       {/* Follow-up alert */}
       {stats.followUps.length > 0 && (
         <div className="bg-amber-950/40 border border-amber-700/50 rounded-xl p-4">
@@ -222,5 +227,34 @@ function TopJobRow({ job }) {
         </span>
       </div>
     </div>
+  )
+}
+
+
+// ── Agent health strip ────────────────────────────────────────────────────────
+const Item = ({ icon: Icon, label, value, warn }) => (
+  <div className="flex items-center gap-2 text-xs">
+    <Icon size={13} className={warn ? 'text-amber-400' : 'text-indigo-400'} />
+    <span className="text-gray-400">{label}</span>
+    <span className={`font-semibold ${warn ? 'text-amber-300' : 'text-gray-100'}`}>{value}</span>
+  </div>
+)
+
+function AgentStrip({ state, onNavigate }) {
+  const fetchA = state.agents?.find(a => a.agent === 'fetch')
+  const hot = state.discovered.filter(d => d.status === 'new' && ['A', 'B'].includes(d.grade))
+  const pending = state.email_signals.filter(s => !s.applied && !s.dismissed && ['interview', 'offer', 'assessment', 'rejection'].includes(s.classification))
+  const high = state.improvements.filter(i => i.severity === 'high')
+  const lr = fetchA?.last_run
+  const dot = fetchA?.running ? 'bg-sky-400 animate-pulse' : lr?.status === 'ok' ? 'bg-emerald-400' : lr ? 'bg-red-400' : 'bg-gray-600'
+  return (
+    <button onClick={() => onNavigate('agents')} className="w-full text-left bg-[#131313] border border-[#262626] hover:border-indigo-700/60 rounded-xl px-4 py-3 flex flex-wrap items-center gap-x-6 gap-y-2 transition-colors">
+      <div className="flex items-center gap-2 text-sm font-medium text-white"><span className={`w-2 h-2 rounded-full ${dot}`} /><Bot size={15} className="text-indigo-400" /> Agents</div>
+      <Item icon={Rss} label="Last fetch" value={lr ? `${ago(lr.started_at)} · ${lr.stats?.new ?? 0} new` : 'never'} />
+      <Item icon={Rss} label="A/B roles in feed" value={hot.length} warn={hot.some(d => d.grade === 'A')} />
+      <Item icon={Inbox} label="Email signals pending" value={pending.length} warn={pending.length > 0} />
+      <Item icon={ListChecks} label="High-priority findings" value={high.length} warn={high.length > 0} />
+      <span className="ml-auto text-xs text-gray-500 flex items-center gap-1">Open workflow <ArrowRight size={12} /></span>
+    </button>
   )
 }

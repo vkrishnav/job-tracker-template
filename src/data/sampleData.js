@@ -8,6 +8,7 @@ export const STATUSES = [
   'Accepted',
   'Rejected',
   'Withdrawn',
+  'Closed',
 ]
 
 export const LEVELS = ['Senior', 'Lead', 'Staff', 'Principal', 'Distinguished', 'Fellow']
@@ -22,6 +23,7 @@ export const STATUS_COLORS = {
   Accepted:          'bg-green-900 text-green-200',
   Rejected:          'bg-red-900 text-red-200',
   Withdrawn:         'bg-zinc-700 text-zinc-300',
+  Closed:            'bg-zinc-800 text-zinc-400',
 }
 
 export const PRIORITY_LABELS = ['', '★', '★★', '★★★', '★★★★', '★★★★★']
@@ -53,11 +55,17 @@ export const SAMPLE_JOBS = [
     applied_date: '',
     next_action_date: daysFromNow(2),
     deadline: '',
-    resume_version: 'v3-fintech',
+    resume_version: 'ai',
     job_url: 'https://stripe.com/jobs',
     notes: 'Strong eng culture. Payments infra team is interesting.',
     priority: 5,
     contacts: [{ name: 'Alex Kim', title: 'Engineering Manager', linkedin: '', email: '' }],
+    // resume-intelligence fields
+    ats_score: 84,
+    keyword_gaps: ['incident command', 'on-call rotation'],
+    interview_prep_done: true,
+    prep_questions_count: 12,
+    fit_score: 9,
   },
   {
     id: '2',
@@ -75,11 +83,17 @@ export const SAMPLE_JOBS = [
     applied_date: '',
     next_action_date: daysFromNow(5),
     deadline: '',
-    resume_version: 'v2-cloud',
+    resume_version: 'fullstack',
     job_url: 'https://careers.microsoft.com',
     notes: 'Azure Infra team. Good WLB reputation.',
     priority: 4,
     contacts: [],
+    // resume-intelligence fields
+    ats_score: 71,
+    keyword_gaps: ['Azure Service Bus', 'ARM templates', 'Bicep'],
+    interview_prep_done: false,
+    prep_questions_count: 5,
+    fit_score: 7,
   },
   {
     id: '3',
@@ -97,11 +111,17 @@ export const SAMPLE_JOBS = [
     applied_date: '',
     next_action_date: daysFromNow(-1),
     deadline: '',
-    resume_version: 'v3-faang',
+    resume_version: 'ai',
     job_url: 'https://careers.google.com',
     notes: 'Need to nail system design. Target Infra or Payments.',
     priority: 5,
     contacts: [],
+    // resume-intelligence fields
+    ats_score: 56,
+    keyword_gaps: ['Spanner', 'Borg/Kubernetes internals', 'SRE practices', 'Protobufs at scale'],
+    interview_prep_done: false,
+    prep_questions_count: 0,
+    fit_score: 8,
   },
   {
     id: '4',
@@ -119,11 +139,17 @@ export const SAMPLE_JOBS = [
     applied_date: '',
     next_action_date: daysFromNow(7),
     deadline: '',
-    resume_version: 'v3-fintech',
+    resume_version: 'fullstack',
     job_url: 'https://www.capitalonecareers.com',
     notes: 'Kafka + distributed systems focus. Good fintech experience match.',
     priority: 3,
     contacts: [],
+    // resume-intelligence fields
+    ats_score: null,
+    keyword_gaps: [],
+    interview_prep_done: false,
+    prep_questions_count: 0,
+    fit_score: null,
   },
   {
     id: '5',
@@ -141,11 +167,17 @@ export const SAMPLE_JOBS = [
     applied_date: '',
     next_action_date: daysFromNow(3),
     deadline: '',
-    resume_version: 'v2-cloud',
+    resume_version: null,
     job_url: 'https://salesforce.com/careers',
     notes: '26 week parental leave is exceptional. Platform team.',
     priority: 4,
     contacts: [],
+    // resume-intelligence fields
+    ats_score: null,
+    keyword_gaps: [],
+    interview_prep_done: false,
+    prep_questions_count: 0,
+    fit_score: null,
   },
 ]
 

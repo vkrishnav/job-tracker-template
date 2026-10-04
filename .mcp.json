@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "overleaf-resume": {
+      "command": "node",
+      "args": ["mcp/overleaf-resume/server.mjs"],
+      "env": {}
+    }
+  }
+}
